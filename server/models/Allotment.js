@@ -7,7 +7,8 @@ const allotmentSchema = new mongoose.Schema({
   },
   roomNo: String,
   seatNo: String,
-  examDate: Date
+  subject: String,
+  examDate: Date,
 });
 
 module.exports = mongoose.model('Allotment', allotmentSchema);
