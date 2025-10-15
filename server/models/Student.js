@@ -14,12 +14,13 @@ const studentSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   password: {
     type: String,
     required: true,
-    minlength: 6 // optional security measure
+    minlength: 7 // optional security measure
   },
   department: {
     type: String,
