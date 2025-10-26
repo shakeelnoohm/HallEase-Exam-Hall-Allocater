@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const classSchema = new mongoose.Schema({
   department: String,
-  semester: Number,
+  semester: String,
   subject: String,
   examDate: Date
 });

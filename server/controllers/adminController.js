@@ -2,6 +2,7 @@ const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+
 // Add admin (one-time or through route)
 exports.addAdmin = async (req, res) => {
   try {
@@ -33,7 +34,14 @@ exports.adminLogin = async (req, res) => {
 
     const token = jwt.sign({ id: admin._id, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    res.json({ token, admin: { id: admin._id, username: admin.username } });
+        res.status(200).json({
+      message: 'Admin logged in successfully',
+      token,
+      admin: {
+        id: admin._id,
+        username: admin.username
+      }
+    });
   } catch (error) {
     res.status(500).json({ message: 'Login error', error: error.message });
   }
