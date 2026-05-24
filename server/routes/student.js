@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { addStudent, getStudents, studentLogin } = require('../controllers/studentController');
-
-router.post('/add', addStudent);
-router.get('/', getStudents);
-router.post('/login', studentLogin);
+const { addStudent, getStudents, studentLogin, getMe, deleteStudent } = require('../controllers/studentController');
+const verifyAdmin = require('../middleware/verifyAdmin');
 const verifyStudent = require('../middleware/verifyStudent');
 
-
-router.get('/dashboard', verifyStudent, async (req, res) => {
-  res.json({ message: `Welcome student ${req.student.id}` });
-});
+router.post('/login', studentLogin);
+router.get('/me', verifyStudent, getMe);
+router.post('/add', verifyAdmin, addStudent);
+router.get('/', verifyAdmin, getStudents);
+router.delete('/:id', verifyAdmin, deleteStudent);
 
 module.exports = router;

@@ -12,10 +12,10 @@ app.use(express.json());
 
 // Routes
 app.use('/api/admin', require('./routes/adminRoutes'));
-app.use('/api/class', require('./routes/class'));
-app.use('/api/room', require('./routes/room'));
 app.use('/api/student', require('./routes/student'));
+app.use('/api/room', require('./routes/room'));
+app.use('/api/exam', require('./routes/exam'));
 app.use('/api/allotment', require('./routes/allotment'));
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
