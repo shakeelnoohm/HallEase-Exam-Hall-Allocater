@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const examSchema = new mongoose.Schema({
   title: { type: String, required: true },
   examType: { type: String, enum: ['internal', 'university'], required: true },
