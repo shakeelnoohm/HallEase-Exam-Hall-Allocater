@@ -73,12 +73,12 @@ export default function AuditLogs() {
         )}
 
         {/* Filters */}
-        <div className={`p-4 rounded-xl ${darkMode ? "bg-gray-900" : "bg-white"} shadow-sm`}>
+        <div className={"p-4 rounded-xl shadow-sm " + (darkMode ? "bg-gray-900" : "bg-white")}>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             <select
               value={filters.action}
               onChange={(e) => setFilters({ ...filters, action: e.target.value })}
-              className={`border rounded-lg px-3 py-2 text-sm ${darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300"}`}
+              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             >
               <option value="">All Actions</option>
               {Object.keys(actionIcons).map(a => <option key={a} value={a}>{a}</option>)}
@@ -86,7 +86,7 @@ export default function AuditLogs() {
             <select
               value={filters.entity}
               onChange={(e) => setFilters({ ...filters, entity: e.target.value })}
-              className={`border rounded-lg px-3 py-2 text-sm ${darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300"}`}
+              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             >
               <option value="">All Entities</option>
               <option value="Student">Student</option>
@@ -97,7 +97,7 @@ export default function AuditLogs() {
             <select
               value={filters.severity}
               onChange={(e) => setFilters({ ...filters, severity: e.target.value })}
-              className={`border rounded-lg px-3 py-2 text-sm ${darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300"}`}
+              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             >
               <option value="">All Severities</option>
               <option value="INFO">Info</option>
@@ -108,52 +108,52 @@ export default function AuditLogs() {
               type="date"
               value={filters.startDate}
               onChange={(e) => setFilters({ ...filters, startDate: e.target.value })}
-              className={`border rounded-lg px-3 py-2 text-sm ${darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300"}`}
+              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             />
             <input
               type="date"
               value={filters.endDate}
               onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
-              className={`border rounded-lg px-3 py-2 text-sm ${darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300"}`}
+              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             />
           </div>
         </div>
 
         {/* Logs Table */}
-        <div className={`rounded-xl overflow-hidden shadow-sm ${darkMode ? "bg-gray-900" : "bg-white"}`}>
+        <div className={"rounded-xl overflow-hidden shadow-sm " + (darkMode ? "bg-gray-900" : "bg-white")}>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className={darkMode ? "bg-gray-800" : "bg-gray-50"}>
                 <tr>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>Time</th>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>Action</th>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>Entity</th>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>Description</th>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>User</th>
-                  <th className={`px-4 py-3 text-left text-xs font-semibold ${darkMode ? "text-gray-400" : "text-gray-500"}`}>Severity</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>Time</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>Action</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>Entity</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>Description</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>User</th>
+                  <th className={"px-4 py-3 text-left text-xs font-semibold " + (darkMode ? "text-gray-400" : "text-gray-500")}>Severity</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {logs.map((log) => (
                   <tr key={log._id} className={darkMode ? "hover:bg-gray-800" : "hover:bg-gray-50"}>
-                    <td className={`px-4 py-3 text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                    <td className={"px-4 py-3 text-xs " + (darkMode ? "text-gray-400" : "text-gray-500")}>
                       {new Date(log.createdAt).toLocaleString()}
                     </td>
                     <td className="px-4 py-3">
                       <span className="text-lg mr-2">{actionIcons[log.action] || "📋"}</span>
                       <span className={darkMode ? "text-gray-300" : "text-gray-700"}>{log.action}</span>
                     </td>
-                    <td className={`px-4 py-3 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                    <td className={"px-4 py-3 " + (darkMode ? "text-gray-300" : "text-gray-700")}>
                       {log.entity}
                     </td>
-                    <td className={`px-4 py-3 max-w-md truncate ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                    <td className={"px-4 py-3 max-w-md truncate " + (darkMode ? "text-gray-300" : "text-gray-700")}>
                       {log.description}
                     </td>
-                    <td className={`px-4 py-3 text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                    <td className={"px-4 py-3 text-xs " + (darkMode ? "text-gray-400" : "text-gray-500")}>
                       {log.performedBy?.username || "System"}
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-1 rounded text-xs font-semibold ${severityColors[log.severity]}`}>
+                      <span className={"px-2 py-1 rounded text-xs font-semibold " + severityColors[log.severity]}>
                         {log.severity}
                       </span>
                     </td>
