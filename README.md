@@ -361,29 +361,6 @@ Edit `server/controllers/roleController.js` to modify:
 
 ---
 
-## 📝 Changelog
-
-### v2.0 (Current)
-- ✅ Visual exam calendar
-- ✅ QR code check-in system
-- ✅ Audit logging & compliance
-- ✅ Emergency broadcast system
-- ✅ Chat support tickets
-- ✅ Backup & restore
-- ✅ Role-based permissions
-- ✅ PWA with offline support
-- ✅ Dark mode
-- ✅ Question paper tracking
-
-### v1.0 (Base)
-- ✅ Core allocation algorithm
-- ✅ Email notifications
-- ✅ PDF hall tickets
-- ✅ CSV import
-- ✅ Student & admin portals
-
----
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -403,8 +380,6 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Developer
 
 Built with ❤️ for educational institutions.
-
-For support or inquiries, contact: [support@hallease.edu]
 
 ---
 
