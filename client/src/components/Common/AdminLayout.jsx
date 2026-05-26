@@ -1,17 +1,28 @@
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 const navItems = [
   { path: "/admin/dashboard", label: "Dashboard", icon: "🏠" },
+  { path: "/admin/analytics", label: "Analytics", icon: "📊" },
+  { path: "/admin/calendar", label: "Calendar", icon: "📅" },
   { path: "/admin/exams", label: "Manage Exams", icon: "📋" },
   { path: "/admin/rooms", label: "Exam Halls", icon: "🏫" },
   { path: "/admin/students", label: "Students", icon: "👥" },
+  { path: "/admin/invigilators", label: "Invigilators", icon: "👨‍🏫" },
   { path: "/admin/allocate", label: "Allocate Halls", icon: "🪑" },
+  { path: "/admin/qr-scanner", label: "QR Scanner", icon: "📱" },
+  { path: "/admin/audit-logs", label: "Audit Logs", icon: "📜" },
+  { path: "/admin/emergency", label: "Emergency", icon: "🚨" },
+  { path: "/admin/feedback", label: "Feedback", icon: "💬" },
+  { path: "/admin/support", label: "Support", icon: "🎧" },
+  { path: "/admin/backup", label: "Backup", icon: "💾" },
 ];
 
 export default function AdminLayout({ children, title }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { darkMode, toggleDarkMode } = useTheme();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -48,7 +59,14 @@ export default function AdminLayout({ children, title }) {
             </Link>
           ))}
         </nav>
-        <div className="px-3 py-4 border-t border-blue-800">
+        <div className="px-3 py-4 border-t border-blue-800 space-y-2">
+          <button
+            onClick={toggleDarkMode}
+            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-blue-200 hover:bg-blue-800 hover:text-white transition"
+          >
+            <span>{darkMode ? "☀️" : "🌙"}</span>
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
           <button
             onClick={handleLogout}
             className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-red-300 hover:bg-red-900/30 hover:text-red-200 transition"
@@ -60,15 +78,15 @@ export default function AdminLayout({ children, title }) {
 
       {/* Main */}
       <div className="flex-1 flex flex-col">
-        <header className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between shadow-sm">
-          <h1 className="text-xl font-bold text-gray-800">{title}</h1>
-          <div className="text-sm text-gray-500">
-            Admin: <span className="font-semibold text-gray-700">
+        <header className={`border-b px-8 py-4 flex items-center justify-between shadow-sm ${darkMode ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"}`}>
+          <h1 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}>{title}</h1>
+          <div className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+            Admin: <span className={`font-semibold ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               {JSON.parse(localStorage.getItem("admin") || "{}").username || "Admin"}
             </span>
           </div>
         </header>
-        <main className="flex-1 p-8 overflow-auto">{children}</main>
+        <main className={`flex-1 p-8 overflow-auto ${darkMode ? "bg-gray-950" : "bg-gray-50"}`}>{children}</main>
       </div>
     </div>
   );
