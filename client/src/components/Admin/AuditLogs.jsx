@@ -10,15 +10,15 @@ const severityColors = {
 };
 
 const actionIcons = {
-  CREATE: "➕",
-  UPDATE: "✏️",
-  DELETE: "🗑️",
+  CREATE: "+",
+  UPDATE: "✎",
+  DELETE: "🗑",
   LOGIN: "🔑",
   LOGOUT: "🚪",
   EXPORT: "📊",
   ALLOCATE: "🪑",
   EMAIL_SEND: "📧",
-  ATTENDANCE_MARK: "✅",
+  ATTENDANCE_MARK: "✓",
   EMERGENCY_BROADCAST: "🚨"
 };
 
@@ -63,10 +63,10 @@ export default function AuditLogs() {
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.actionStats?.map(stat => (
-              <div key={stat._id} className={`p-4 rounded-xl ${darkMode ? "bg-gray-900" : "bg-white"} shadow-sm`}>
+              <div key={stat._id} className={"p-4 rounded-xl shadow-sm " + (darkMode ? "bg-gray-900" : "bg-white")}>
                 <div className="text-2xl">{actionIcons[stat._id] || "📋"}</div>
-                <p className={`text-2xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}>{stat.count}</p>
-                <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}">{stat._id}</p>
+                <p className={"text-2xl font-bold " + (darkMode ? "text-white" : "text-gray-800")}>{stat.count}</p>
+                <p className={"text-xs " + (darkMode ? "text-gray-400" : "text-gray-500")}>{stat._id}</p>
               </div>
             ))}
           </div>
@@ -108,7 +108,7 @@ export default function AuditLogs() {
               type="date"
               value={filters.startDate}
               onChange={(e) => setFilters({ ...filters, startDate: e.target.value })}
-              className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
+             className={"border rounded-lg px-3 py-2 text-sm " + (darkMode ? "bg-gray-800 border-gray-700 text-white" : "border-gray-300")}
             />
             <input
               type="date"

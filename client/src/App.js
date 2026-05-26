@@ -4,6 +4,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 
 import LandingPage from "./pages/LandingPage";
 import AdminLogin from "./pages/AdminLogin";
+import AdminRegister from "./pages/AdminRegister";
 import StudentLogin from "./pages/StudentLogin";
 
 import AdminDashboard from "./components/Admin/AdminDashboard";
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/student/login" element={<StudentLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/analytics" element={<AnalyticsDashboard />} />
